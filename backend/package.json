@@ -8,6 +8,7 @@
         "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand"
     },
     "dependencies": {
+        "@jest/globals": "^30.5.2",
         "bcrypt": "^6.0.0",
         "cookie-parser": "~1.4.4",
         "cors": "^2.8.6",
