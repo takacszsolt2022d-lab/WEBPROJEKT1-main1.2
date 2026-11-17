@@ -5,7 +5,7 @@
     "type": "module",
     "scripts": {
         "start": "nodemon ./bin/www",
-        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+        "test": "node --experimental-vm-modules ./node_modules/jest/bin/jest.js --runInBand"
     },
     "dependencies": {
         "bcrypt": "^6.0.0",
@@ -14,10 +14,12 @@
         "debug": "~2.6.9",
         "dotenv": "^18.0.6",
         "express": "~4.16.1",
-        "jest": "30.6.4",
         "jsonwebtoken": "^9.0.3",
         "morgan": "~1.9.1",
         "mysql2": "^3.24.5",
         "nodemon": "^3.1.14"
+    },
+    "devDependencies": {
+        "jest": "^30.5.2"
     }
 }
