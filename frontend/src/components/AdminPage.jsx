@@ -2,7 +2,6 @@ import {useState, useEffect} from 'react'
 import api from '../api/axiosInstance'
 
 export default function AdminPage() {
-    const [isAdmin, setIsAdmin] = useState(false);
     const [message, setMessage] = useState('');
 
     useEffect(() => {
@@ -10,11 +9,7 @@ export default function AdminPage() {
         const checkAdmin = async () => {
             try {
                 const response = await api.get('/users/test');
-                const data = await response.data;
-                console.log('Admin check response:', data);
-                if (data.isAdmin) {
-                    setIsAdmin(true);
-                }
+                console.log('Admin check response:', response.data);
             } catch (error) {
                 console.log('Error checking admin status:', error);
                 if (error.response && error.response.status === 401) {
