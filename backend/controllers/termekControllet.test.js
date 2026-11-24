@@ -1,5 +1,3 @@
-import termekController from "./termekController";
-import termekModel from "./termekModel";
 import { expect, jest, test } from "@jest/globals";
 
 const termekModelMock = {
@@ -11,7 +9,8 @@ const termekModelMock = {
 jest.unstable_mockModule("../models/termekModel.js", () => ({
     default: termekModelMock,
 }));
-test;
+
+const { default: termekController } = await import("./termekController.js");
 
 const createReponse = () => {
     const res = {
@@ -27,6 +26,6 @@ test("Visszaadja az összes terméket JSON formátumban", async () => {
     const mockAdatok = [{ id: 1, nev: "Termék 1", ár: 1000 }];
     termekModelMock.getAll.mockResolvedValue(mockAdatok);
     const res = createReponse();
-    const result = await termekController.getAll({ params: {} }, res);
-    expect(result).toEqual(mockAdatok);
+    await termekController.getAll({ params: {} }, res);
+    expect(res.json).toHaveBeenCalledWith(mockAdatok);
 });
